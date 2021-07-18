@@ -1,3 +1,56 @@
 <resources>
-    <string name="app_name">movies</string>
+    <string name="app_name">Movies</string>
+
+    <string name="login_title">Login</string>
+    <string name="login_info">Please sign in to continue</string>
+    <string name="login_title_email">Email</string>
+    <string name="login_title_password">Password</string>
+    <string name="login_btn">LOGIN</string>
+    <string name="login_forget_password">Forget Password?</string>
+    <string name="login_no_account">Do not have an account?</string>
+    <string name="login_create_account">Sign up</string>
+
+    <string name="login_error_fill_empty_email">Please enter your email</string>
+    <string name="login_error_fill_empty_pass">Please enter your passWord</string>
+    <string name="login_error_min_number_pass">Your password must be at least 6</string>
+    <string name="login_error_send_info">Error while send Info To Server…</string>
+
+    <string name="register_title">Create Account</string>
+    <string name="register_info">Please fill the input below here</string>
+    <string name="register_title_user_name">User Name</string>
+    <string name="register_title_email">Email</string>
+    <string name="register_title_Pass">Password</string>
+    <string name="register_title_confirm_pass">Confirm Password</string>
+    <string name="register_btn">SIGN UP</string>
+    <string name="register_have_account">Already, have account?</string>
+    <string name="register_go_login">Sign in</string>
+
+    <string name="register_error_fill_empty_name">Please enter your name</string>
+    <string name="register_error_fill_empty_email">Please enter your email</string>
+    <string name="register_error_fill_empty_pass">Please enter your passWord</string>
+    <string name="register_error_not_match">password and confirm are not match</string>
+    <string name="register_error_min_number_pass">Your password must be at least 6</string>
+
+    <string name="no_internet_title">Looks like you are offline!</string>
+    <string name="no_internet_info">No Internet Connection Found.Check Your Connection</string>
+    <string name="no_internet_title_try">TRY AGAIN</string>
+
+    <string name="home_title">Movies</string>
+    <string name="home_title_search">search</string>
+    <string name="home_title_see_all">See All</string>
+    <string name="home_title_New">New Movies</string>
+    <string name="home_title_popular">Popular</string>
+
+    <string name="detail_see_comments">Comments</string>
+    <string name="detail_add_save"> Save</string>
+    <string name="detail_story_title">Story Line</string>
+    <string name="detail_cast_title">The Cast</string>
+    <string name="detail_see_more">See More</string>
+    <string name="detail_trailer">Watch Trailers</string>
+
+    <string name="msg_login">send your information to server</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_content">img</string>
+
 </resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/na"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.splash.SplashScreenFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.signs.login.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_newSeeAllFragment"
+            app:destination="@id/newSeeAllFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_popularSeeAllFragment"
+            app:destination="@id/popularSeeAllFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSeeAllFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.home.seeAll.newSeeAll.NewSeeAllFragment"
+        android:label="fragment_new_see_all"
+        tools:layout="@layout/fragment_new_see_all" >
+        <action
+            android:id="@+id/action_newSeeAllFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/popularSeeAllFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.home.seeAll.popularSeeAll.PopularSeeAllFragment"
+        android:label="fragment_popular_see_all"
+        tools:layout="@layout/fragment_popular_see_all" >
+        <action
+            android:id="@+id/action_popularSeeAllFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
