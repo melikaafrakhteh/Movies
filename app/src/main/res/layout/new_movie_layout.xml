@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="160dp"
+    android:layout_height="200dp"
+    android:layout_margin="4dp"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/layout_new_image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            tools:src="@drawable/ic_login" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/layout_new_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="2dp"
+        android:textColor="@color/white_second"
+        android:textSize="14sp"
+        tools:text="@string/register_title_confirm_pass" />
+
+</LinearLayout>
