@@ -23,7 +23,7 @@
         android:label="LoginFragment" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.afrakhteh.movies.ui.fragment.home.HomeFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.home.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
