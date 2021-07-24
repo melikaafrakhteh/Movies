@@ -39,10 +39,11 @@ class SplashScreenFragment : BaseFragment(){
         val handler = Handler()
         handler.postDelayed({
          //   checkInternetForNavigate()
-            val action =
+            /*val action =
              SplashScreenFragmentDirections.actionSplashFragmentToHomeFragment()
-            navigate(action)
-
+            navigate(action)*/
+            val action = SplashScreenFragmentDirections.actionSplashFragmentToLoginFragment()
+             navigate(action)
 
         }, CONSTANTS.SPLASH_SCREEN_TIME)
     }

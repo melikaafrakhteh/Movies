@@ -10,7 +10,7 @@ class ApiHelperImpl(
     private val apiService: ApiService
 ) : ApiHelper {
     override suspend fun login(email: String, password: String):
-            MutableLiveData<String> {
+            Response<String> {
         return apiService.login(email, password)
     }
 

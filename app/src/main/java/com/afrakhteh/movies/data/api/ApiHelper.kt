@@ -8,7 +8,7 @@ import retrofit2.Response
 
 interface ApiHelper {
 
-    suspend fun login(email: String, password: String): MutableLiveData<String>
+    suspend fun login(email: String, password: String): Response<String>
 
     suspend fun getLimitedNewMovie(): Response<List<Movies>>
 

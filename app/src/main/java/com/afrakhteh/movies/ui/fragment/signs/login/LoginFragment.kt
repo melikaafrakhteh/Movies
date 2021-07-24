@@ -26,8 +26,8 @@ class LoginFragment : BaseFragment() {
     private val loginViewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
@@ -38,6 +38,7 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.loginProgressBar.visibility = View.GONE
+
 
         onBackPressed()
         buttonClicks()
@@ -51,13 +52,13 @@ class LoginFragment : BaseFragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(
-                requireActivity(),
-                onBackPressedCallback
+            requireActivity(),
+            onBackPressedCallback
         )
     }
 
     private fun getEmail() {
-        email = binding.loginGetUserEmail.text.toString().trim()
+        email = binding.loginGetUserEmail.text.toString().trim() + ".com"
     }
 
     private fun getPassWord() {
@@ -76,31 +77,28 @@ class LoginFragment : BaseFragment() {
 
     private fun buttonClicks() {
         binding.loginForgetPassTv.setOnClickListener {
-            //  val action = LoginFragmentDirections.actionLoginFragmentToForgetPassFragment()
-            //   navigate(action)
+            val action = LoginFragmentDirections.actionLoginFragmentToForgetPassFragment()
+            navigate(action)
         }
 
         binding.loginSignUpTv.setOnClickListener {
-            //    val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
-            //   navigate(action)
+            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            navigate(action)
+
         }
 
         binding.loginSignInButtonTv.setOnClickListener {
             getEmail()
-
             if (email.isEmpty()) {
-
                 binding.loginGetUserEmail.error =
-                        getString(R.string.login_error_fill_empty_email)
-
+                    getString(R.string.login_error_fill_empty_email)
             } else {
                 getPassWord()
-
                 if (checkPasswordIsValidation()) { //true
                     checkNetwork()
                 } else {
                     binding.loginGetUserPassword.error =
-                            getString(R.string.login_error_min_number_pass)
+                        getString(R.string.login_error_min_number_pass)
                 }
             }
         }
@@ -110,20 +108,19 @@ class LoginFragment : BaseFragment() {
         if (checkInternet()) {
             //true
             sendInformationToServer()
+            loginViewModel.login(email, passWord)
         } else {
-            //no internet
-            //  val action = LoginFragmentDirections.actionLoginFragmentToNoInternetFragment()
-            // navigate(action)
+            messageToast("No Internet connected")
         }
     }
 
     private fun sendInformationToServer() {
-        loginViewModel.login(email, passWord)
-        loginViewModel.loginResult.observe(viewLifecycleOwner, Observer {
+
+        loginViewModel.response.observe(viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
                     binding.loginProgressBar.visibility = View.GONE
-                    binding.loginErrorTv.visibility = View.VISIBLE
+                    binding.loginErrorTv.visibility = View.GONE
                     messageToast("welcome dear ${it.data}")
                 }
                 Status.LOADING -> {
