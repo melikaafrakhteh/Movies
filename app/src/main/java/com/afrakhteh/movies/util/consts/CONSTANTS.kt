@@ -9,5 +9,6 @@ class CONSTANTS {
 
 
         const val ERROR_LOGIN = "1"
+        const val NO_TRAILER_EXISTS = "1"
     }
 }

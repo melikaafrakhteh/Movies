@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.data.api
 
 import androidx.lifecycle.MutableLiveData
+import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.util.consts.URLS
 import com.afrakhteh.movies.util.nework.Resource
@@ -34,4 +35,10 @@ interface ApiService {
 
     @GET(URLS.GET_ALL_POPULAR_URL)
     suspend fun getAllPopularMovie(): Response<List<Movies>>
+
+    @FormUrlEncoded
+    @POST(URLS.GET_CAST_URL)
+    suspend fun getAllMoviesActors(
+            @Field("id") movie_id: Int
+    ): Response<List<Actors>>
 }

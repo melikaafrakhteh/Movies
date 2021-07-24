@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -13,12 +14,13 @@ import com.bumptech.glide.Glide
 
 open class BaseFragment : Fragment() {
 
-    fun showImages(uri: Int, img: ImageView) {
-        Glide.with(requireContext()).load(uri).into(img)
-    }
 
     fun navigate(action: NavDirections) {
         findNavController().navigate(action)
+    }
+
+    fun navigate(action: Int, bundle: Bundle) {
+        findNavController().navigate(action,bundle)
     }
 
     fun checkInternet(): Boolean {

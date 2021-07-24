@@ -8,6 +8,8 @@ import com.afrakhteh.movies.data.api.ApiService
 import com.afrakhteh.movies.util.consts.CONSTANTS
 import com.afrakhteh.movies.util.consts.URLS
 import com.afrakhteh.movies.util.nework.NetworkHelper
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -22,29 +24,35 @@ import org.koin.dsl.module
 private fun provideNetWorkHelper(context: Context) = NetworkHelper(context)
 
 private fun provideOkHttpClient() =
-        if (BuildConfig.DEBUG) {
-            val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.setLevel(
-                    HttpLoggingInterceptor.Level.BODY
-            )
+    if (BuildConfig.DEBUG) {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(
+            HttpLoggingInterceptor.Level.BODY
+        )
 
-            OkHttpClient.Builder()
-                    .addInterceptor(loggingInterceptor)
-                    .build()
-        } else {
-            OkHttpClient.Builder().build()
-        }
+        OkHttpClient.Builder()
+            .addInterceptor(loggingInterceptor)
+            .build()
+    } else {
+        OkHttpClient.Builder().build()
+    }
+
+private fun provideMoshi(): Moshi {
+    return Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+}
 
 private fun provideRetrofit(okHttpClient: OkHttpClient, base_url: String): Retrofit =
-        Retrofit.Builder()
-                .baseUrl(base_url)
-                .addConverterFactory(MoshiConverterFactory.create())
-                .client(okHttpClient)
-                .build()
+    Retrofit.Builder()
+        .baseUrl(base_url)
+        .addConverterFactory(MoshiConverterFactory.create(provideMoshi()).asLenient())
+        .client(okHttpClient)
+        .build()
 
 
 private fun provideApiService(retrofit: Retrofit): ApiService =
-        retrofit.create(ApiService::class.java)
+    retrofit.create(ApiService::class.java)
 
 
 private fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper

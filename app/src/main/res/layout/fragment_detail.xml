@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black_lighter"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/black_lighter"
         android:paddingBottom="36dp"
-        tools:context=".ui.fragment.detail.detailFragment">
+        tools:context=".ui.fragment.detail.detail.DetailFragment">
 
         <ImageView
             android:id="@+id/detail_big_image_iv"
@@ -68,15 +69,15 @@
             android:id="@+id/detail_rate_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
-            android:textColor="@color/white_second"
-            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_baseline_star_24"
             android:drawablePadding="8dp"
             android:padding="4dp"
-            android:drawableStart="@drawable/ic_baseline_star_24"
+            android:textColor="@color/white_second"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf ="@+id/detail_movie_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/detail_movie_name_tv"
             tools:text="@string/home_title_popular" />
 
         <TextView
@@ -95,7 +96,7 @@
             android:id="@+id/detail_comments_btn_tv"
             android:layout_width="160dp"
             android:layout_height="54dp"
-            android:layout_margin="16dp"
+            android:layout_margin="20dp"
             android:background="@drawable/second_button_shape"
             android:gravity="center"
             android:paddingStart="8dp"
@@ -110,13 +111,13 @@
             android:id="@+id/detail_save_btn_tv"
             android:layout_width="160dp"
             android:layout_height="54dp"
+            android:layout_margin="20dp"
             android:background="@drawable/second_button_shape"
             android:gravity="center"
             android:paddingStart="8dp"
             android:text="@string/detail_add_save"
             android:textColor="@color/green"
             android:textSize="18sp"
-            android:layout_margin="16dp"
             app:drawableStartCompat="@drawable/ic_full_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_director_name_tv" />
@@ -135,19 +136,20 @@
 
         <TextView
             android:id="@+id/detail_desc_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="18dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:padding="4dp"
+            android:padding="8dp"
             android:text="@string/detail_story_title"
             android:textColor="@color/white_second"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/detail_story_line_title_tv"
             app:layout_constraintTop_toBottomOf="@+id/detail_story_line_title_tv" />
 
         <TextView
@@ -186,7 +188,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_cast_title_tv" />
 
+        <ProgressBar
+            android:id="@+id/detail_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="158dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detail_cast_rv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/detail_cast_rv" />
+
         <TextView
+            android:id="@+id/detail_trailer_tv"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginStart="36dp"

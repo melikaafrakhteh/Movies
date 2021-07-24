@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.databinding.FragmentHomeBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
-import com.afrakhteh.movies.ui.fragment.home.HomeFragmentDirections
 import com.afrakhteh.movies.ui.fragment.home.new.NewLimitedAdapter
 import com.afrakhteh.movies.ui.fragment.home.new.NewLimitedMovieViewModel
 import com.afrakhteh.movies.ui.fragment.home.popular.PopularLimitedMovieAdapter

@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.data.repository
 
 import com.afrakhteh.movies.data.api.ApiHelper
+import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
 import retrofit2.Response
 
@@ -27,6 +28,10 @@ class MainRepository(
 
     suspend fun getAllPopularMovie() : Response<List<Movies>>{
         return api.getAllPopularMovie()
+    }
+
+    suspend fun getAllMoviesActors(movie_id: Int): Response<List<Actors>>{
+        return api.getAllMoviesActors(movie_id)
     }
 
 }

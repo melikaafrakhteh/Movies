@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_homeFragment_to_popularSeeAllFragment"
             app:destination="@id/popularSeeAllFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/newSeeAllFragment"
@@ -41,6 +44,9 @@
         <action
             android:id="@+id/action_newSeeAllFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_newSeeAllFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/popularSeeAllFragment"
@@ -50,5 +56,62 @@
         <action
             android:id="@+id/action_popularSeeAllFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_popularSeeAllFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.detail.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="movie_name"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="director"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="image"
+            app:argType="string"
+            android:defaultValue="null" />
+        <argument
+            android:name="trailers"
+            android:defaultValue="null" />
+        <argument
+            android:name="new_movie"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="description"
+            app:argType="string" />
+        <argument
+            android:name="rate"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <action
+            android:id="@+id/action_detailFragment_to_trailersFragment"
+            app:destination="@id/trailersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trailersFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.detail.trailer.TrailersFragment"
+        android:label="fragment_trailers"
+        tools:layout="@layout/fragment_trailers" >
+        <action
+            android:id="@+id/action_trailersFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <argument
+            android:name="trailers"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
 </navigation>

@@ -8,6 +8,6 @@ data class Movies(
     val image: String? = null,
     val trailers: String? = null,
     val new: Int? = 0,
-    val description: String? = null,
+    val description : String = "",
     val rate: Float? = 0.0f
 )

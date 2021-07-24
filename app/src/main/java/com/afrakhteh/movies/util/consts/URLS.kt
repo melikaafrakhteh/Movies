@@ -2,7 +2,7 @@ package com.afrakhteh.movies.util.consts
 
 class URLS {
 
-    companion object{
+    companion object {
 
         const val BASE_URL = "http://localhost/movie/"
 

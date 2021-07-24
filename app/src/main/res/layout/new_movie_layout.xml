@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
     android:layout_height="200dp"
+    android:id="@+id/new_movies_layout_linear"
     android:layout_margin="4dp"
     android:background="@android:color/transparent"
     android:orientation="vertical">
