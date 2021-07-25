@@ -38,7 +38,7 @@ class LoginViewModel(
                     }
                 }
             } else {
-                loginResult.postValue(Resource.error("check your internet connection", null))
+                loginResult.postValue(Resource.error("No Internet Connection Found.Check Your Connection", null))
             }
         }
     }

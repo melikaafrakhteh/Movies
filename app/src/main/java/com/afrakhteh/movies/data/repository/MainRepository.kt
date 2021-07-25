@@ -13,6 +13,10 @@ class MainRepository(
         email: String,
         password: String
     ): Response<String> = api.login(email,password)
+    suspend fun register(
+            name: String,
+            email: String,
+            password: String): Response<String> = api.register(name,email,password)
 
     suspend fun  getLimitedNewMovie() : Response<List<Movies>> {
        return api.getLimitedNewMovie()
@@ -33,6 +37,8 @@ class MainRepository(
     suspend fun getAllMoviesActors(movie_id: Int): Response<List<Actors>>{
         return api.getAllMoviesActors(movie_id)
     }
+
+
 
 
 }

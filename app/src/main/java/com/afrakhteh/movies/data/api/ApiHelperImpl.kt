@@ -13,7 +13,10 @@ class ApiHelperImpl(
             Response<String> {
         return apiService.login(email, password)
     }
-
+    override suspend fun register(name: String, email: String, password: String):
+            Response<String> {
+        return apiService.register(name,email,password)
+    }
     override suspend fun getLimitedNewMovie(): Response<List<Movies>> =
         apiService.getLimitedNewMovie()
 
@@ -32,6 +35,8 @@ class ApiHelperImpl(
     override suspend fun getAllMoviesActors(movie_id: Int): Response<List<Actors>> {
         return apiService.getAllMoviesActors(movie_id)
     }
+
+
 
 
 }

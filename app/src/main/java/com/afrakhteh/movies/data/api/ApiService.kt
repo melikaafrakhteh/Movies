@@ -17,15 +17,22 @@ interface ApiService {
     @POST(URLS.LOGIN_URL)
     @FormUrlEncoded
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+            @Field("email") email: String,
+            @Field("password") password: String
     ): Response<String>
 
     //register
+    @POST(URLS.REGISTER_URL)
+    @FormUrlEncoded
+    suspend fun register(
+            @Field("name") name: String,
+            @Field("email") email: String,
+            @Field("password") password: String
+    ): Response<String>
 
     //new movie
     @GET(URLS.GET_LIMIT_NEW_URL)
-    suspend fun getLimitedNewMovie() : Response<List<Movies>>
+    suspend fun getLimitedNewMovie(): Response<List<Movies>>
 
     @GET(URLS.GET_ALL_NEW_URL)
     suspend fun getAllNewMovie(): Response<List<Movies>>

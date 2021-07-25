@@ -10,5 +10,7 @@ class CONSTANTS {
 
         const val ERROR_LOGIN = "1"
         const val NO_TRAILER_EXISTS = "1"
+        const val REGISTER_HAVE_ACCOUNT = "1" //"This username already exists"
+        const val REGISTER_SUCCESS_ACCOUNT = "2" //"Thank you for registering"
     }
 }

@@ -10,6 +10,8 @@ interface ApiHelper {
 
     suspend fun login(email: String, password: String): Response<String>
 
+    suspend fun register(name: String, email: String, password: String): Response<String>
+
     suspend fun getLimitedNewMovie(): Response<List<Movies>>
 
     suspend fun getLimitedPopular(): Response<List<Movies>>
@@ -19,4 +21,6 @@ interface ApiHelper {
     suspend fun getAllPopularMovie() :Response<List<Movies>>
 
     suspend fun getAllMoviesActors(movie_id: Int) : Response<List<Actors>>
+
+
 }

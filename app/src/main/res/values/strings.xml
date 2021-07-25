@@ -31,10 +31,6 @@
     <string name="register_error_not_match">password and confirm are not match</string>
     <string name="register_error_min_number_pass">Your password must be at least 6</string>
 
-    <string name="no_internet_title">Looks like you are offline!</string>
-    <string name="no_internet_info">No Internet Connection Found.Check Your Connection</string>
-    <string name="no_internet_title_try">TRY AGAIN</string>
-
     <string name="home_title">Movies</string>
     <string name="home_title_search">search</string>
     <string name="home_title_see_all">See All</string>

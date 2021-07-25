@@ -6,6 +6,7 @@ import com.afrakhteh.movies.ui.fragment.home.popular.PopularLimitedMovieViewMode
 import com.afrakhteh.movies.ui.fragment.home.seeAll.newSeeAll.NewSeeAllViewModel
 import com.afrakhteh.movies.ui.fragment.home.seeAll.popularSeeAll.PopularSeeAllViewModel
 import com.afrakhteh.movies.ui.fragment.signs.login.LoginViewModel
+import com.afrakhteh.movies.ui.fragment.signs.register.RegisterViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -27,5 +28,8 @@ val viewModelModule = module {
     }
     viewModel {
         DetailViewModel(get())
+    }
+    viewModel {
+        RegisterViewModel(get(),get())
     }
 }

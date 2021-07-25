@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.ui.fragment.signs.login
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.afrakhteh.movies.databinding.FragmentLoginBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.util.consts.CONSTANTS
 import com.afrakhteh.movies.util.nework.Status
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -23,11 +25,11 @@ class LoginFragment : BaseFragment() {
     private lateinit var email: String
     private lateinit var passWord: String
 
-    private val loginViewModel: LoginViewModel by viewModel()
+    private val loginViewModel: LoginViewModel by inject()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
@@ -52,8 +54,8 @@ class LoginFragment : BaseFragment() {
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(
-            requireActivity(),
-            onBackPressedCallback
+                requireActivity(),
+                onBackPressedCallback
         )
     }
 
@@ -91,14 +93,14 @@ class LoginFragment : BaseFragment() {
             getEmail()
             if (email.isEmpty()) {
                 binding.loginGetUserEmail.error =
-                    getString(R.string.login_error_fill_empty_email)
+                        getString(R.string.login_error_fill_empty_email)
             } else {
                 getPassWord()
                 if (checkPasswordIsValidation()) { //true
                     checkNetwork()
                 } else {
                     binding.loginGetUserPassword.error =
-                        getString(R.string.login_error_min_number_pass)
+                            getString(R.string.login_error_min_number_pass)
                 }
             }
         }
@@ -122,6 +124,7 @@ class LoginFragment : BaseFragment() {
                     binding.loginProgressBar.visibility = View.GONE
                     binding.loginErrorTv.visibility = View.GONE
                     messageToast("welcome dear ${it.data}")
+                    goToHome()
                 }
                 Status.LOADING -> {
                     binding.loginProgressBar.visibility = View.VISIBLE
@@ -134,6 +137,14 @@ class LoginFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    private fun goToHome() {
+        val handle = Handler()
+        handle.postDelayed({
+            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+            navigate(action)
+        }, 1000)
     }
 
 
