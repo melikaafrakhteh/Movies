@@ -80,11 +80,10 @@
                     android:id="@+id/layout_popular_rate_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_baseline_star_24"
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
                     android:padding="8dp"
-                    android:text="3.5"
+                    tools:text="3.5"
                     android:textColor="@color/white_second"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -93,7 +92,8 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/space"
                     app:layout_constraintTop_toTopOf="@+id/layout_popular_favorite_tgl_btn"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="1.0"
+                    app:drawableStartCompat="@drawable/ic_baseline_star_24" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
@@ -114,6 +114,7 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            tools:src="@drawable/ic_login" />
+            tools:src="@drawable/ic_login"
+            tools:ignore = "ContentDescription"/>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,9 @@ import com.afrakhteh.movies.R
 import com.afrakhteh.movies.databinding.FragmentRegisterBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.util.consts.CONSTANTS
+import com.afrakhteh.movies.util.consts.KEYS
 import com.afrakhteh.movies.util.nework.Status
+import com.afrakhteh.movies.util.storage.MyShared
 import org.koin.android.ext.android.inject
 
 
@@ -82,6 +84,7 @@ class RegisterFragment : BaseFragment() {
                     binding.registerProgress.visibility = View.GONE
                     messageToast("${it.data}")
                     goToHome()
+                    saveData()
                 }
                 Status.LOADING -> {
                     binding.registerProgress.visibility = View.VISIBLE
@@ -95,6 +98,11 @@ class RegisterFragment : BaseFragment() {
         })
 
         viewModel.register(name, email, password)
+    }
+
+    private fun saveData() {
+        MyShared.save(KEYS.SHARED_EMAIL, email)
+        MyShared.save(KEYS.SHARED_NAME, name)
     }
 
     private fun goToHome() {

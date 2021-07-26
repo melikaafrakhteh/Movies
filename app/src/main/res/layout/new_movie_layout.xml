@@ -21,7 +21,8 @@
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            tools:src="@drawable/ic_login" />
+            tools:src="@drawable/ic_login"
+            tools:ignore = "ContentDescription"/>
     </androidx.cardview.widget.CardView>
 
     <TextView

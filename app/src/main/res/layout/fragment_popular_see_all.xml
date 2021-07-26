@@ -16,7 +16,8 @@
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/green" />
+        app:tint="@color/green"
+        tools:ignore = "ContentDescription"/>
 
     <TextView
         android:id="@+id/pop_see_title_tv"

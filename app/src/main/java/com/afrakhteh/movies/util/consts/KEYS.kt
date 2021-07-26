@@ -1,5 +1,7 @@
 package com.afrakhteh.movies.util.consts
 
+import android.content.SharedPreferences
+
 class KEYS {
     companion object{
 
@@ -11,5 +13,9 @@ class KEYS {
         const val RATE = "rte"
         const val IMAGE = "img"
         const val TRAILERS = "tra"
+
+        const val SHARED_PREF ="SharedPreferences"
+        const val SHARED_EMAIL ="email"
+        const val SHARED_NAME ="name"
     }
 }

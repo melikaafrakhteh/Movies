@@ -140,9 +140,9 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun goToHome() {
+        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
         val handle = Handler()
         handle.postDelayed({
-            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
             navigate(action)
         }, 1000)
     }

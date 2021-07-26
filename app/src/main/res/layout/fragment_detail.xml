@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:background="@color/black_lighter"
         android:paddingBottom="36dp"
-        tools:context=".ui.fragment.detail.detail.DetailFragment">
+        tools:context=".ui.fragment.detail.detail.DetailFragment"
+        tools:ignore="ScrollViewSize">
 
         <ImageView
             android:id="@+id/detail_big_image_iv"
@@ -21,7 +22,8 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore = "ContentDescription"/>
 
         <ImageView
             android:id="@+id/detail_back_iv"
@@ -31,7 +33,8 @@
             android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/green" />
+            app:tint="@color/green"
+            tools:ignore = "ContentDescription"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -49,7 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                tools:ignore = "ContentDescription"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -71,14 +75,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_baseline_star_24"
             android:drawablePadding="8dp"
             android:padding="4dp"
             android:textColor="@color/white_second"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toBottomOf="@+id/detail_movie_name_tv"
-            tools:text="@string/home_title_popular" />
+            tools:text="@string/home_title_popular"
+            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
 
         <TextView
             android:id="@+id/detail_director_name_tv"
