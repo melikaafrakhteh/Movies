@@ -17,5 +17,6 @@ class KEYS {
         const val SHARED_PREF ="SharedPreferences"
         const val SHARED_EMAIL ="email"
         const val SHARED_NAME ="name"
+        const val SHARED_PASS ="pass"
     }
 }

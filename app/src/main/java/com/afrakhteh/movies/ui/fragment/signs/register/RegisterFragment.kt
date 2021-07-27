@@ -103,6 +103,7 @@ class RegisterFragment : BaseFragment() {
     private fun saveData() {
         MyShared.save(KEYS.SHARED_EMAIL, email)
         MyShared.save(KEYS.SHARED_NAME, name)
+        MyShared.save(KEYS.SHARED_PASS, password)
     }
 
     private fun goToHome() {

@@ -48,4 +48,5 @@ interface ApiService {
     suspend fun getAllMoviesActors(
             @Field("id") movie_id: Int
     ): Response<List<Actors>>
+
 }

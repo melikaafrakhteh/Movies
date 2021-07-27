@@ -46,6 +46,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //limitedNewMoviesViewModel = ViewModelProvider(this).get(NewLimitedMovieViewModel::class.java)
+        MyShared.getInstance(requireContext())
 
         limitedNewMoviesRecycler()
         limitedPopularMovieRecycler()
@@ -58,9 +59,8 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setMenuUserName() {
-        MyShared.getInstance(requireContext())
-        val userName = MyShared.load(KEYS.SHARED_NAME)
-        binding.navigation.menuUserNameTv.text = userName
+        val email = MyShared.load(KEYS.SHARED_EMAIL)
+        binding.navigation.menuUserNameTv.text = email
     }
 
     private fun menuButtonClicks() {
@@ -82,7 +82,9 @@ class HomeFragment : BaseFragment() {
             val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
             navigate(action)
         }
-        binding.navigation.menuExitLinear.setOnClickListener { }
+        binding.navigation.menuExitLinear.setOnClickListener {
+            MyShared.clear()
+        }
     }
 
     private fun closeDrawer() {
