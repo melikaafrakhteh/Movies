@@ -1,9 +1,7 @@
 package com.afrakhteh.movies.data.api
 
-import androidx.lifecycle.MutableLiveData
 import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
-import com.afrakhteh.movies.util.nework.Resource
 import retrofit2.Response
 
 class ApiHelperImpl(
@@ -36,7 +34,13 @@ class ApiHelperImpl(
         return apiService.getAllMoviesActors(movie_id)
     }
 
+    override suspend fun search(search: String): Response<Movies> {
+        return apiService.search(search)
+    }
 
+    override suspend fun sendComments(movie_id: Int, email: String, comment: String): Response<String> {
+        return apiService.sendComments(movie_id, email, comment)
+    }
 
 
 }

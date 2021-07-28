@@ -1,10 +1,12 @@
 package com.afrakhteh.movies.di.module
 
+import com.afrakhteh.movies.ui.fragment.comments.NewComments.NewCommentViewModel
 import com.afrakhteh.movies.ui.fragment.detail.detail.DetailViewModel
 import com.afrakhteh.movies.ui.fragment.home.new.NewLimitedMovieViewModel
 import com.afrakhteh.movies.ui.fragment.home.popular.PopularLimitedMovieViewModel
 import com.afrakhteh.movies.ui.fragment.home.seeAll.newSeeAll.NewSeeAllViewModel
 import com.afrakhteh.movies.ui.fragment.home.seeAll.popularSeeAll.PopularSeeAllViewModel
+import com.afrakhteh.movies.ui.fragment.search.SearchViewModel
 import com.afrakhteh.movies.ui.fragment.signs.login.LoginViewModel
 import com.afrakhteh.movies.ui.fragment.signs.register.RegisterViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -31,5 +33,11 @@ val viewModelModule = module {
     }
     viewModel {
         RegisterViewModel(get(),get())
+    }
+    viewModel {
+        SearchViewModel(get(), get())
+    }
+    viewModel {
+        NewCommentViewModel(get(),get())
     }
 }

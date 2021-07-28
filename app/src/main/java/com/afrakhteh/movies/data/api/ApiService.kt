@@ -1,15 +1,10 @@
 package com.afrakhteh.movies.data.api
 
-import androidx.lifecycle.MutableLiveData
 import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.util.consts.URLS
-import com.afrakhteh.movies.util.nework.Resource
 import retrofit2.Response
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -30,23 +25,43 @@ interface ApiService {
             @Field("password") password: String
     ): Response<String>
 
-    //new movie
+    //new movies
     @GET(URLS.GET_LIMIT_NEW_URL)
     suspend fun getLimitedNewMovie(): Response<List<Movies>>
 
+    // all new movies
     @GET(URLS.GET_ALL_NEW_URL)
     suspend fun getAllNewMovie(): Response<List<Movies>>
 
+    //popular movies
     @GET(URLS.GET_LIMIT_POPULAR_URL)
     suspend fun getLimitedPopular(): Response<List<Movies>>
 
+    //all popular movies
     @GET(URLS.GET_ALL_POPULAR_URL)
     suspend fun getAllPopularMovie(): Response<List<Movies>>
 
+    // get movies actors
     @FormUrlEncoded
     @POST(URLS.GET_CAST_URL)
     suspend fun getAllMoviesActors(
             @Field("id") movie_id: Int
     ): Response<List<Actors>>
+
+    //search
+    @GET(URLS.SEARCH_URL)
+    suspend fun search(
+            @Query("s")
+            searchQuery: String,
+    ): Response<Movies>
+
+    //send comment
+    @FormUrlEncoded
+    @POST(URLS.SEND_COMMENT_URL)
+    suspend fun sendComments(
+        @Field("movie_id") movie_id: Int,
+        @Field("email") email: String,
+        @Field("main_comment") comment: String
+    ): Response<String>
 
 }

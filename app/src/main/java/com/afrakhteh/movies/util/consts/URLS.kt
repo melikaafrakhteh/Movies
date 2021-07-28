@@ -4,7 +4,7 @@ class URLS {
 
     companion object {
 
-      const val BASE_URL = "http://localhost/movie/"
+       const val BASE_URL = "http://localhost/movie/"
 
 
 
@@ -24,6 +24,8 @@ class URLS {
         const val GET_LIMIT_NEW_URL = "getnew.php"
         const val GET_ALL_NEW_URL = "getallnew.php"
 
-        const val SEARCH_URL = "search.php?s="
+      // const val SEARCH_URL = "search.php?s="
+       const val SEARCH_URL = "search.php"
+
     }
 }
