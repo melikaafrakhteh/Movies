@@ -3,6 +3,7 @@ package com.afrakhteh.movies.data.repository
 import com.afrakhteh.movies.data.api.ApiHelper
 import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
+import com.afrakhteh.movies.data.dataModel.Search
 import retrofit2.Response
 
 class MainRepository(
@@ -38,7 +39,7 @@ class MainRepository(
         return api.getAllMoviesActors(movie_id)
     }
 
-    suspend fun search(search: String): Response<MainSearch> {
+    suspend fun search(search: String): Response<Search> {
         return api.search(search)
     }
 

@@ -2,6 +2,7 @@ package com.afrakhteh.movies.data.api
 
 import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
+import com.afrakhteh.movies.data.dataModel.Search
 import com.afrakhteh.movies.util.consts.URLS
 import retrofit2.Response
 import retrofit2.http.*
@@ -53,7 +54,7 @@ interface ApiService {
     suspend fun search(
             @Query("s")
             searchQuery: String,
-    ): Response<Movies>
+    ): Response<Search>
 
     //send comment
     @FormUrlEncoded

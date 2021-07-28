@@ -1,7 +1,6 @@
 package com.afrakhteh.movies.data.dataModel
 
 data class Movies(
-
     val id: Int? = 0,
     val movie_name: String? = null,
     val director: String? = null,

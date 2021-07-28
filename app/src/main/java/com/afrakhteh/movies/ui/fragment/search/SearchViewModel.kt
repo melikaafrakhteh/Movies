@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.afrakhteh.movies.data.dataModel.Movies
+import com.afrakhteh.movies.data.dataModel.Search
 import com.afrakhteh.movies.data.repository.MainRepository
 import com.afrakhteh.movies.util.nework.NetworkHelper
 import com.afrakhteh.movies.util.nework.Resource
@@ -15,8 +16,8 @@ class SearchViewModel(
         private var networkHelper: NetworkHelper
 ) : ViewModel() {
 
-    private var search: MutableLiveData<Resource<Movies>> = MutableLiveData()
-    val searchResponse: LiveData<Resource<Movies>> get() = search
+    private var search: MutableLiveData<Resource<Search>> = MutableLiveData()
+    val searchResponse: LiveData<Resource<Search>> get() = search
 
     fun search(searching: String) {
         viewModelScope.launch {

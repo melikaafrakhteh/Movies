@@ -2,6 +2,7 @@ package com.afrakhteh.movies.data.api
 
 import com.afrakhteh.movies.data.dataModel.Actors
 import com.afrakhteh.movies.data.dataModel.Movies
+import com.afrakhteh.movies.data.dataModel.Search
 import retrofit2.Response
 
 class ApiHelperImpl(
@@ -34,7 +35,7 @@ class ApiHelperImpl(
         return apiService.getAllMoviesActors(movie_id)
     }
 
-    override suspend fun search(search: String): Response<Movies> {
+    override suspend fun search(search: String): Response<Search> {
         return apiService.search(search)
     }
 

@@ -80,7 +80,7 @@ class SearchFragment : BaseFragment() {
                 Status.SUCCESS -> {
                     success()
                     it.data?.let { data ->
-                        loadList(listOf(data))
+                        loadList(data)
                     }
                 }
             }
