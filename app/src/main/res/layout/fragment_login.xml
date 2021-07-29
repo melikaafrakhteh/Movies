@@ -111,7 +111,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/new_comment_send_button_tv"
+        android:id="@+id/login_send_button_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -138,7 +138,7 @@
         android:text="@string/login_forget_password"
         android:textColor="@color/green"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/new_comment_send_button_tv"
+        app:layout_constraintTop_toBottomOf="@id/login_send_button_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -169,7 +169,7 @@
         app:layout_constraintTop_toTopOf="@+id/register_have_account_tv" />
 
     <TextView
-        android:id="@+id/new_comment_error_tv"
+        android:id="@+id/login_error_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"

@@ -79,8 +79,8 @@ class SearchFragment : BaseFragment() {
                 }
                 Status.SUCCESS -> {
                     success()
-                    it.data?.let { data ->
-                        loadList(data)
+                    it.data?.let {  data ->
+                        loadList(data.records)
                     }
                 }
             }

@@ -89,7 +89,7 @@ class LoginFragment : BaseFragment() {
 
         }
 
-        binding.loginSignInButtonTv.setOnClickListener {
+        binding.loginSendButtonTv.setOnClickListener {
             getEmail()
             if (email.isEmpty()) {
                 binding.loginGetUserEmail.error =
