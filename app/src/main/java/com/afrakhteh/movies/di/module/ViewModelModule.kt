@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.di.module
 
 import com.afrakhteh.movies.ui.fragment.comments.NewComments.NewCommentViewModel
+import com.afrakhteh.movies.ui.fragment.comments.getAllComments.CommentListViewModel
 import com.afrakhteh.movies.ui.fragment.detail.detail.DetailViewModel
 import com.afrakhteh.movies.ui.fragment.home.new.NewLimitedMovieViewModel
 import com.afrakhteh.movies.ui.fragment.home.popular.PopularLimitedMovieViewModel
@@ -39,5 +40,8 @@ val viewModelModule = module {
     }
     viewModel {
         NewCommentViewModel(get(),get())
+    }
+    viewModel {
+        CommentListViewModel(get(),get())
     }
 }

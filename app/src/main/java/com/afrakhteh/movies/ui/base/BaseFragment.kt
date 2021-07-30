@@ -19,6 +19,10 @@ open class BaseFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    fun navigate(action: Int) {
+        findNavController().navigate(action)
+    }
+
     fun navigate(action: Int, bundle: Bundle) {
         findNavController().navigate(action,bundle)
     }

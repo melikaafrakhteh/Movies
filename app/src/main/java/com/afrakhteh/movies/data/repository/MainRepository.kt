@@ -2,6 +2,7 @@ package com.afrakhteh.movies.data.repository
 
 import com.afrakhteh.movies.data.api.ApiHelper
 import com.afrakhteh.movies.data.dataModel.Actors
+import com.afrakhteh.movies.data.dataModel.Comments
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.data.dataModel.Search
 import retrofit2.Response
@@ -43,8 +44,12 @@ class MainRepository(
         return api.search(search)
     }
 
-    suspend fun sendComments(movie_id: Int, email: String, comment: String): Response<String>{
-        return api.sendComments(movie_id, email, comment)
+    suspend fun sendComments(movie_id: Int, name: String, comment: String): Response<String>{
+        return api.sendComments(movie_id, name, comment)
+    }
+
+    suspend fun getAllComments(movie_id: Int): Response<List<Comments>>{
+        return api.getAllComments(movie_id)
     }
 
 

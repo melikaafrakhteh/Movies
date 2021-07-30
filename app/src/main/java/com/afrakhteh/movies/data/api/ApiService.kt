@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.data.api
 
 import com.afrakhteh.movies.data.dataModel.Actors
+import com.afrakhteh.movies.data.dataModel.Comments
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.data.dataModel.Search
 import com.afrakhteh.movies.util.consts.URLS
@@ -61,8 +62,15 @@ interface ApiService {
     @POST(URLS.SEND_COMMENT_URL)
     suspend fun sendComments(
         @Field("movie_id") movie_id: Int,
-        @Field("email") email: String,
+        @Field("user_name") name: String,
         @Field("main_comment") comment: String
     ): Response<String>
+
+    //get All Comments
+    @FormUrlEncoded
+    @POST(URLS.GET_COMMENT_URL)
+    suspend fun getAllComments(
+            @Field("id") movie_id: Int
+    ): Response<List<Comments>>
 
 }

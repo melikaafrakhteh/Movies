@@ -4,7 +4,8 @@ class URLS {
 
     companion object {
 
-      const val BASE_URL = "http://localhost/movie/"
+    const val BASE_URL = "http://localhost:8080/movie/"
+   //   const val BASE_URL = "http://10.0.2.2/movie/"
 
 
        
@@ -16,7 +17,6 @@ class URLS {
         const val SEND_COMMENT_URL = "sendcomment.php"
         const val GET_COMMENT_URL = "getcomment.php"
 
-        const val GET_MOVIE_DETAIL_URL = "getmoviedata.php"
         const val GET_CAST_URL = "getcast.php"
 
         const val GET_LIMIT_POPULAR_URL = "getpopular.php"

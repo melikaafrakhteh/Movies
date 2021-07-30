@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.data.api
 
 import com.afrakhteh.movies.data.dataModel.Actors
+import com.afrakhteh.movies.data.dataModel.Comments
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.data.dataModel.Search
 import retrofit2.Response
@@ -23,7 +24,9 @@ interface ApiHelper {
 
     suspend fun search(search: String): Response<Search>
 
-    suspend fun sendComments(movie_id: Int,email: String,comment: String): Response<String>
+    suspend fun sendComments(movie_id: Int,name: String,comment: String): Response<String>
+
+    suspend fun getAllComments(movie_id: Int): Response<List<Comments>>
 
 
 }

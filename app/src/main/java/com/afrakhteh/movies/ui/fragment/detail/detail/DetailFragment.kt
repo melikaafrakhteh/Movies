@@ -1,7 +1,6 @@
 package com.afrakhteh.movies.ui.fragment.detail.detail
 
 import android.os.Bundle
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -85,9 +84,15 @@ class DetailFragment : BaseFragment() {
             } else {
                 val action = R.id.action_detailFragment_to_trailersFragment
                 val bundle = Bundle()
-                bundle.putString(KEYS.TRAILERS,trailers)
-                navigate(action,bundle)
+                bundle.putString(KEYS.TRAILERS, trailers)
+                navigate(action, bundle)
             }
+        }
+        binding.detailCommentsBtnTv.setOnClickListener {
+            val action = R.id.action_detailFragment_to_commentListFragment
+            val bundle = Bundle()
+            bundle.putInt(KEYS.KEY_MOVIE_ID, movieId)
+            navigate(action, bundle)
         }
     }
 

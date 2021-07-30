@@ -114,7 +114,8 @@
             app:argType="integer" />
         <argument
             android:name="description"
-            app:argType="string" />
+            app:argType="string"
+            android:defaultValue="null"/>
         <argument
             android:name="rate"
             android:defaultValue="0.0"
@@ -122,6 +123,9 @@
         <action
             android:id="@+id/action_detailFragment_to_trailersFragment"
             app:destination="@id/trailersFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_commentListFragment"
+            app:destination="@id/commentListFragment" />
     </fragment>
     <fragment
         android:id="@+id/trailersFragment"
@@ -192,5 +196,42 @@
         <action
             android:id="@+id/action_searchFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCommentsFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.comments.NewComments.NewCommentsFragment"
+        android:label="fragment_new_comments"
+        tools:layout="@layout/fragment_new_comments" >
+
+        <argument
+            android:name="movie_id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_newCommentsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/commentListFragment"
+        android:name="com.afrakhteh.movies.ui.fragment.comments.getAllComments.CommentListFragment"
+        android:label="fragment_comment_list"
+        tools:layout="@layout/fragment_comment_list" >
+
+        <action
+            android:id="@+id/action_commentListFragment_to_newCommentsFragment"
+            app:destination="@id/newCommentsFragment" />
+        <argument
+            android:name="movie_id"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_commentListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

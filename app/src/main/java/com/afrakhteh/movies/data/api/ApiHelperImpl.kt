@@ -1,6 +1,7 @@
 package com.afrakhteh.movies.data.api
 
 import com.afrakhteh.movies.data.dataModel.Actors
+import com.afrakhteh.movies.data.dataModel.Comments
 import com.afrakhteh.movies.data.dataModel.Movies
 import com.afrakhteh.movies.data.dataModel.Search
 import retrofit2.Response
@@ -39,8 +40,12 @@ class ApiHelperImpl(
         return apiService.search(search)
     }
 
-    override suspend fun sendComments(movie_id: Int, email: String, comment: String): Response<String> {
-        return apiService.sendComments(movie_id, email, comment)
+    override suspend fun sendComments(movie_id: Int, name: String, comment: String): Response<String> {
+        return apiService.sendComments(movie_id, name, comment)
+    }
+
+    override suspend fun getAllComments(movie_id: Int): Response<List<Comments>> {
+        return apiService.getAllComments(movie_id)
     }
 
 
