@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afrakhteh.movies.data.dataModel.Movies
-import com.afrakhteh.movies.databinding.FragmentHomeBinding
 import com.afrakhteh.movies.databinding.MenuHomeLayoutBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.ui.fragment.home.new.NewLimitedAdapter
@@ -83,7 +82,9 @@ class HomeFragment : BaseFragment() {
             navigate(action)
         }
         binding.navigation.menuExitLinear.setOnClickListener {
+            MyShared.getInstance(requireContext())
             MyShared.clear()
+            binding.navigation.menuUserNameTv.text = ""
         }
     }
 

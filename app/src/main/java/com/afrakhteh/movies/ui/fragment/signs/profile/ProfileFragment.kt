@@ -53,18 +53,11 @@ class ProfileFragment : BaseFragment() {
 
     private fun checkProfileData() {
         loadData()
-        val isRegistered = email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty()
+        val isRegistered = email.isNotEmpty()  && password.isNotEmpty()|| name.isNotEmpty()
         if (isRegistered) { // true -> The user has registered
             showData()
-            buttonClicks()
         } else {
             showNotRegister()
-        }
-    }
-
-    private fun buttonClicks() {
-        binding.profileCommentButtonTv.setOnClickListener {
-            //todo go to comments fragment
         }
     }
 
@@ -75,9 +68,6 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun notRegisterClicks() {
-        binding.profileCommentButtonTv.setOnClickListener {
-            messageToast(getString(R.string.profile_not_register))
-        }
         binding.profileErrorGoRegisterTv.setOnClickListener {
             val action = ProfileFragmentDirections.actionProfileFragmentToRegisterFragment()
             navigate(action)

@@ -4,9 +4,8 @@ class URLS {
 
     companion object {
 
-     const val BASE_URL = "http://localhost:8080/movie/"
+    const val BASE_URL = "http://localhost:8080/movie/"
    //   const val BASE_URL = "http://10.0.2.2/movie/"
-
 
        
         const val LOGIN_URL = "login.php"

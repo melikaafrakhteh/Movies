@@ -61,9 +61,9 @@ interface ApiService {
     @FormUrlEncoded
     @POST(URLS.SEND_COMMENT_URL)
     suspend fun sendComments(
-        @Field("movie_id") movie_id: Int,
-        @Field("user_name") name: String,
-        @Field("main_comment") comment: String
+            @Field("movie_id") movie_id: Int,
+            @Field("user_name") name: String,
+            @Field("main_comment") comment: String
     ): Response<String>
 
     //get All Comments
@@ -73,4 +73,10 @@ interface ApiService {
             @Field("id") movie_id: Int
     ): Response<List<Comments>>
 
+    //forget password
+    @FormUrlEncoded
+    @POST(URLS.FORGET_PASS_URL)
+    suspend fun forgetPassword(
+            @Field("email") email: String
+    ): Response<String>
 }

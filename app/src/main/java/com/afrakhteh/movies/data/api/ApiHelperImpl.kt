@@ -48,5 +48,9 @@ class ApiHelperImpl(
         return apiService.getAllComments(movie_id)
     }
 
+    override suspend fun forgetPassword(email: String): Response<String> {
+        return apiService.forgetPassword(email)
+    }
+
 
 }

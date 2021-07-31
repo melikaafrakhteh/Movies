@@ -8,6 +8,7 @@ import com.afrakhteh.movies.ui.fragment.home.popular.PopularLimitedMovieViewMode
 import com.afrakhteh.movies.ui.fragment.home.seeAll.newSeeAll.NewSeeAllViewModel
 import com.afrakhteh.movies.ui.fragment.home.seeAll.popularSeeAll.PopularSeeAllViewModel
 import com.afrakhteh.movies.ui.fragment.search.SearchViewModel
+import com.afrakhteh.movies.ui.fragment.signs.forgetPass.ForgetPasswordViewModel
 import com.afrakhteh.movies.ui.fragment.signs.login.LoginViewModel
 import com.afrakhteh.movies.ui.fragment.signs.register.RegisterViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -43,5 +44,8 @@ val viewModelModule = module {
     }
     viewModel {
         CommentListViewModel(get(),get())
+    }
+    viewModel {
+        ForgetPasswordViewModel(get(),get())
     }
 }

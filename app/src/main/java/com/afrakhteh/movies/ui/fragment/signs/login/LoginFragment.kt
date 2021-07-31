@@ -13,7 +13,9 @@ import com.afrakhteh.movies.R
 import com.afrakhteh.movies.databinding.FragmentLoginBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.util.consts.CONSTANTS
+import com.afrakhteh.movies.util.consts.KEYS
 import com.afrakhteh.movies.util.nework.Status
+import com.afrakhteh.movies.util.storage.MyShared
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -124,6 +126,7 @@ class LoginFragment : BaseFragment() {
                     binding.loginProgressBar.visibility = View.GONE
                     binding.loginErrorTv.visibility = View.GONE
                     messageToast("welcome dear ${it.data}")
+                    saveEmail(it.data)
                     goToHome()
                 }
                 Status.LOADING -> {
@@ -137,6 +140,16 @@ class LoginFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    private fun saveEmail(data: String?) {
+        MyShared.getInstance(requireContext())
+        MyShared.save(KEYS.SHARED_EMAIL,data!!)
+        savePassword()
+    }
+
+    private fun savePassword() {
+        MyShared.save(KEYS.SHARED_PASS,passWord)
     }
 
     private fun goToHome() {

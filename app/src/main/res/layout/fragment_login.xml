@@ -106,6 +106,7 @@
             android:background="@android:color/transparent"
             android:gravity="start|center_horizontal"
             android:inputType="text"
+            android:imeOptions="actionDone"
             android:textColor="@color/white_second"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>

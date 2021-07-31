@@ -52,5 +52,9 @@ class MainRepository(
         return api.getAllComments(movie_id)
     }
 
+    suspend fun forgetPassword(email: String): Response<String>{
+        return api.forgetPassword(email)
+    }
+
 
 }
