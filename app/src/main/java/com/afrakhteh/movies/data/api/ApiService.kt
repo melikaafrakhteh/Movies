@@ -79,4 +79,16 @@ interface ApiService {
     suspend fun forgetPassword(
             @Field("email") email: String
     ): Response<String>
+
+    // save item
+    @FormUrlEncoded
+    @POST(URLS.SAVE_URL)
+    suspend fun saveMovie(
+            @Field("id") movie_id: Int,
+            @Field("email") email: String,
+            @Field("name") name: String,
+            @Field("director") director: String,
+            @Field("image") image: String,
+            @Field("rate") rate: String
+    ):Response<String>
 }

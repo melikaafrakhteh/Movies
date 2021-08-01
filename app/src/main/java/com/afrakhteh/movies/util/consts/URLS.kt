@@ -4,10 +4,10 @@ class URLS {
 
     companion object {
 
-    const val BASE_URL = "http://localhost:8080/movie/"
+  const val BASE_URL = "http://localhost:8080/movie/"
    //   const val BASE_URL = "http://10.0.2.2/movie/"
 
-       
+
         const val LOGIN_URL = "login.php"
         const val REGISTER_URL = "register.php"
 
@@ -25,6 +25,10 @@ class URLS {
 
       // const val SEARCH_URL = "search.php?s="
        const val SEARCH_URL = "search.php"
+
+        const val SAVE_URL = "save.php"
+        const val GET_SAVE_URL = "getsave.php"
+        const val DELETE_SAVE_URL = "deletesave.php"
 
     }
 }

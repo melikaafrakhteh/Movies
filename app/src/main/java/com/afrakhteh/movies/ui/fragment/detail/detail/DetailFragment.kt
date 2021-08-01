@@ -1,5 +1,7 @@
 package com.afrakhteh.movies.ui.fragment.detail.detail
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.util.consts.CONSTANTS
 import com.afrakhteh.movies.util.consts.KEYS
 import com.afrakhteh.movies.util.nework.Status
+import com.afrakhteh.movies.util.storage.MyShared
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -38,6 +41,11 @@ class DetailFragment : BaseFragment() {
     private lateinit var castAdapter: ActorAdapter
     private val list: ArrayList<Actors> = ArrayList()
 
+    private var isNotSaved: Boolean = true
+
+    private lateinit var email: String
+    private var imageInt: Int = 0
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -50,12 +58,34 @@ class DetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getBundles()
+
         viewModel.fetchData(movieId, name, director, image, trailers, new, description, rate)
         viewModel.getActorList(movieId)
+
+        MyShared.getInstance(requireContext())
+        checkSaveButtonState()
+
         observeViewModel()
+
         buttonClick()
+
         implementCastRecycler()
 
+        getEmail()
+    }
+
+    private fun checkSaveButtonState() {
+        var saveDetail:Int = MyShared.loadInt(KEYS.SHARED_IMAGE)
+        if (saveDetail!= 0){
+            binding.detailSaveBtnIv.setImageResource(R.drawable.save)
+        }else{
+            binding.detailSaveBtnIv.setImageResource(R.drawable.notsave)
+        }
+
+    }
+
+    private fun getEmail() {
+        email = MyShared.load(KEYS.SHARED_EMAIL)
     }
 
     private fun implementCastRecycler() {
@@ -94,6 +124,40 @@ class DetailFragment : BaseFragment() {
             bundle.putInt(KEYS.KEY_MOVIE_ID, movieId)
             navigate(action, bundle)
         }
+
+        binding.detailSaveBtnIv.setOnClickListener {
+            if (isNotSaved) {
+                changeSaveBtnAppearance()
+                sendSaveInformationToServer()
+                isNotSaved = false
+            } else {
+                defaultSaveBtnAppearance()
+                isNotSaved = true
+            }
+
+        }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun defaultSaveBtnAppearance() {
+        binding.detailSaveBtnIv.apply {
+            imageInt = R.drawable.notsave
+            setImageResource(imageInt)
+            MyShared.deleteInt(KEYS.SHARED_IMAGE)
+        }
+    }
+
+    private fun sendSaveInformationToServer() {
+        viewModel.saveMovie(movieId, email, name, director, image, rate.toString())
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private fun changeSaveBtnAppearance() {
+        binding.detailSaveBtnIv.apply {
+            imageInt = R.drawable.save
+            setImageResource(imageInt)
+            MyShared.saveInt(KEYS.SHARED_IMAGE,imageInt)
+        }
     }
 
     private fun observeViewModel() {
@@ -123,6 +187,24 @@ class DetailFragment : BaseFragment() {
                             castAdapter.loadData(it)
                         }
 
+                    }
+                }
+            }
+        })
+
+        viewModel.saveMovieItem.observe(viewLifecycleOwner, Observer {
+            when (it.status) {
+                Status.LOADING -> {
+                    binding.detailProgress.visibility = View.VISIBLE
+                }
+                Status.ERROR -> {
+                    binding.detailProgress.visibility = View.GONE
+                    messageToast(it.data!!)
+                }
+                Status.SUCCESS -> {
+                    binding.detailProgress.visibility = View.GONE
+                    it.data?.let {
+                        messageToast(it)
                     }
                 }
             }

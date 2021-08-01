@@ -52,5 +52,9 @@ class ApiHelperImpl(
         return apiService.forgetPassword(email)
     }
 
+    override suspend fun saveMovie(movie_id: Int, email: String, name: String, director: String, image: String, rate: String): Response<String> {
+        return apiService.saveMovie(movie_id, email, name, director, image, rate)
+    }
+
 
 }

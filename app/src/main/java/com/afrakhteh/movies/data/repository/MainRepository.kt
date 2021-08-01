@@ -56,5 +56,9 @@ class MainRepository(
         return api.forgetPassword(email)
     }
 
+    suspend fun saveMovie(movie_id: Int, email: String, name: String, director: String, image: String, rate: String): Response<String>{
+        return api.saveMovie(movie_id, email, name, director, image, rate)
+    }
+
 
 }

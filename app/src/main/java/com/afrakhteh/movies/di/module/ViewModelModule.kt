@@ -31,7 +31,7 @@ val viewModelModule = module {
         PopularSeeAllViewModel(get(), get())
     }
     viewModel {
-        DetailViewModel(get())
+        DetailViewModel(get(),get())
     }
     viewModel {
         RegisterViewModel(get(),get())

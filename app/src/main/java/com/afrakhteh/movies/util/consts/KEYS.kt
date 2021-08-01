@@ -18,6 +18,7 @@ class KEYS {
         const val SHARED_EMAIL ="email"
         const val SHARED_NAME ="name"
         const val SHARED_PASS ="pass"
+        const val SHARED_IMAGE ="image"
 
         const val KEY_MOVIE_ID ="movie_id"
         const val KEY_Name ="user_name"

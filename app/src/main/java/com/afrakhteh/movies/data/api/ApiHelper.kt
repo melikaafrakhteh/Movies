@@ -29,4 +29,6 @@ interface ApiHelper {
     suspend fun getAllComments(movie_id: Int): Response<List<Comments>>
 
     suspend fun forgetPassword(email: String): Response<String>
+
+    suspend fun saveMovie(movie_id: Int,email: String,name: String,director:String, image: String,rate: String):Response<String>
 }
