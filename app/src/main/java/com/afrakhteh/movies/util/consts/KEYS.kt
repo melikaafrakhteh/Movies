@@ -22,5 +22,14 @@ class KEYS {
 
         const val KEY_MOVIE_ID ="movie_id"
         const val KEY_Name ="user_name"
+
+
+        const val SAVE_ID = "id"
+        const val SAVE_NAME = "name"
+        const val SAVE_DIRECTOR  = "director"
+        const val SAVE_IMAGE = "image"
+        const val SAVE_EMAIL = "email"
+        const val SAVE_RATE = "rate"
+        const val SAVE_MOVIE_ID = "movie_id"
     }
 }

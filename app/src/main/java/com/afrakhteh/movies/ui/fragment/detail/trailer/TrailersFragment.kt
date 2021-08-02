@@ -43,7 +43,15 @@ class TrailersFragment : BaseFragment(), Player.EventListener {
 
         getBundles()
         implementPlayer()
+        buttonCliCk()
 
+    }
+
+    private fun buttonCliCk() {
+        binding.trailerBackIv.setOnClickListener {
+            val action = TrailersFragmentDirections.actionTrailersFragmentToHomeFragment()
+            navigate(action)
+        }
     }
 
 

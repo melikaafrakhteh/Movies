@@ -1,7 +1,5 @@
 package com.afrakhteh.movies.ui.fragment.detail.detail
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afrakhteh.movies.R
 import com.afrakhteh.movies.data.dataModel.Actors
+import com.afrakhteh.movies.data.dataModel.SaveModel
 import com.afrakhteh.movies.databinding.FragmentDetailBinding
 import com.afrakhteh.movies.ui.base.BaseFragment
 import com.afrakhteh.movies.util.consts.CONSTANTS
 import com.afrakhteh.movies.util.consts.KEYS
 import com.afrakhteh.movies.util.nework.Status
-import com.afrakhteh.movies.util.storage.MyShared
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions.bitmapTransform
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -41,14 +39,12 @@ class DetailFragment : BaseFragment() {
     private lateinit var castAdapter: ActorAdapter
     private val list: ArrayList<Actors> = ArrayList()
 
-    private var isNotSaved: Boolean = true
+   private lateinit var model: SaveModel
 
-    private lateinit var email: String
-    private var imageInt: Int = 0
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -62,31 +58,30 @@ class DetailFragment : BaseFragment() {
         viewModel.fetchData(movieId, name, director, image, trailers, new, description, rate)
         viewModel.getActorList(movieId)
 
-        MyShared.getInstance(requireContext())
-        checkSaveButtonState()
+         model = SaveModel( movieId, name, image, rate.toString(), director,trailers, new, description)
 
         observeViewModel()
 
         buttonClick()
 
         implementCastRecycler()
+        isSaved()
 
-        getEmail()
     }
 
-    private fun checkSaveButtonState() {
-        var saveDetail:Int = MyShared.loadInt(KEYS.SHARED_IMAGE)
-        if (saveDetail!= 0){
-            binding.detailSaveBtnIv.setImageResource(R.drawable.save)
-        }else{
-            binding.detailSaveBtnIv.setImageResource(R.drawable.notsave)
+   private fun isSaved() {
+        viewModel.showAllSaveList().observe(viewLifecycleOwner, Observer {
+            save ->save?.let {
+                it.forEach {
+                    if (it.movie_id == movieId){
+                        binding.detailSaveBtnTg.isChecked = true
+                        return@forEach
+                    }
+                }
         }
-
+        })
     }
 
-    private fun getEmail() {
-        email = MyShared.load(KEYS.SHARED_EMAIL)
-    }
 
     private fun implementCastRecycler() {
         castAdapter = ActorAdapter(list, requireContext())
@@ -118,6 +113,7 @@ class DetailFragment : BaseFragment() {
                 navigate(action, bundle)
             }
         }
+
         binding.detailCommentsBtnTv.setOnClickListener {
             val action = R.id.action_detailFragment_to_commentListFragment
             val bundle = Bundle()
@@ -125,39 +121,31 @@ class DetailFragment : BaseFragment() {
             navigate(action, bundle)
         }
 
-        binding.detailSaveBtnIv.setOnClickListener {
-            if (isNotSaved) {
-                changeSaveBtnAppearance()
+        binding.detailSaveBtnTg.setOnClickListener {
+
+            if (binding.detailSaveBtnTg.isChecked) {
                 sendSaveInformationToServer()
-                isNotSaved = false
+                binding.detailSaveBtnTg.isChecked = true
+
+
             } else {
-                defaultSaveBtnAppearance()
-                isNotSaved = true
+                removeItemFromSave()
+                binding.detailSaveBtnTg.isChecked = false
+
+
             }
-
-        }
-    }
-
-    @SuppressLint("ResourceAsColor")
-    private fun defaultSaveBtnAppearance() {
-        binding.detailSaveBtnIv.apply {
-            imageInt = R.drawable.notsave
-            setImageResource(imageInt)
-            MyShared.deleteInt(KEYS.SHARED_IMAGE)
         }
     }
 
     private fun sendSaveInformationToServer() {
-        viewModel.saveMovie(movieId, email, name, director, image, rate.toString())
+        viewModel.addToSave(model)
+        messageToast("add to save")
     }
 
-    @SuppressLint("ResourceAsColor")
-    private fun changeSaveBtnAppearance() {
-        binding.detailSaveBtnIv.apply {
-            imageInt = R.drawable.save
-            setImageResource(imageInt)
-            MyShared.saveInt(KEYS.SHARED_IMAGE,imageInt)
-        }
+    private fun removeItemFromSave() {
+        viewModel.removeFromSave(movieId)
+        messageToast("remove from save")
+
     }
 
     private fun observeViewModel() {
@@ -192,25 +180,8 @@ class DetailFragment : BaseFragment() {
             }
         })
 
-        viewModel.saveMovieItem.observe(viewLifecycleOwner, Observer {
-            when (it.status) {
-                Status.LOADING -> {
-                    binding.detailProgress.visibility = View.VISIBLE
-                }
-                Status.ERROR -> {
-                    binding.detailProgress.visibility = View.GONE
-                    messageToast(it.data!!)
-                }
-                Status.SUCCESS -> {
-                    binding.detailProgress.visibility = View.GONE
-                    it.data?.let {
-                        messageToast(it)
-                    }
-                }
-            }
-        })
-    }
 
+    }
 
     private fun addDataToViews() {
         binding.detailMovieNameTv.text = name
@@ -220,8 +191,8 @@ class DetailFragment : BaseFragment() {
 
         Glide.with(requireContext()).load(image).into(binding.detailSmallImageIv)
         Glide.with(requireContext()).load(image)
-                .apply(bitmapTransform(BlurTransformation(16)))
-                .into(binding.detailBigImageIv)
+            .apply(bitmapTransform(BlurTransformation(16)))
+            .into(binding.detailBigImageIv)
     }
 
     private fun descriptionLimit() {
@@ -248,5 +219,7 @@ class DetailFragment : BaseFragment() {
         description = arguments?.getString(KEYS.DECS)!!
         new = arguments?.getInt(KEYS.NEW)!!
         rate = arguments?.getFloat(KEYS.RATE)!!
+
+
     }
 }

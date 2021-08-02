@@ -90,5 +90,13 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.13.2'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.13.2'
 
+    def roomVersion = '2.3.0'
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+
 
 }

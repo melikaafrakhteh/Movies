@@ -1,9 +1,6 @@
 package com.afrakhteh.movies.data.api
 
-import com.afrakhteh.movies.data.dataModel.Actors
-import com.afrakhteh.movies.data.dataModel.Comments
-import com.afrakhteh.movies.data.dataModel.Movies
-import com.afrakhteh.movies.data.dataModel.Search
+import com.afrakhteh.movies.data.dataModel.*
 import com.afrakhteh.movies.util.consts.URLS
 import retrofit2.Response
 import retrofit2.http.*
@@ -80,15 +77,5 @@ interface ApiService {
             @Field("email") email: String
     ): Response<String>
 
-    // save item
-    @FormUrlEncoded
-    @POST(URLS.SAVE_URL)
-    suspend fun saveMovie(
-            @Field("id") movie_id: Int,
-            @Field("email") email: String,
-            @Field("name") name: String,
-            @Field("director") director: String,
-            @Field("image") image: String,
-            @Field("rate") rate: String
-    ):Response<String>
+
 }

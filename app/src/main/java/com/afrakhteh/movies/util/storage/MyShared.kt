@@ -33,16 +33,19 @@ object MyShared {
         editor.apply()
     }
 
-    fun saveInt ( key: String, value: Int){
-        editor.putInt(key,value).apply()
+
+    fun saveInt(key: String , value:Int){
+        editor.putInt(key, value)
+        editor.apply()
     }
 
-    fun loadInt(key: String): Int {
-        return sharedPreferences.getInt(key,0)!!
+    fun loadInt(key: String):Int{
+        return sharedPreferences.getInt(key, 0)
     }
 
     fun deleteInt(key: String){
-        editor.remove(key).apply()
+        editor.remove(key)
+        editor.apply()
     }
 
 }

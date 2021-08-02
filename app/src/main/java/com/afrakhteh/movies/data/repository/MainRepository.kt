@@ -1,10 +1,7 @@
 package com.afrakhteh.movies.data.repository
 
 import com.afrakhteh.movies.data.api.ApiHelper
-import com.afrakhteh.movies.data.dataModel.Actors
-import com.afrakhteh.movies.data.dataModel.Comments
-import com.afrakhteh.movies.data.dataModel.Movies
-import com.afrakhteh.movies.data.dataModel.Search
+import com.afrakhteh.movies.data.dataModel.*
 import retrofit2.Response
 
 class MainRepository(
@@ -54,10 +51,6 @@ class MainRepository(
 
     suspend fun forgetPassword(email: String): Response<String>{
         return api.forgetPassword(email)
-    }
-
-    suspend fun saveMovie(movie_id: Int, email: String, name: String, director: String, image: String, rate: String): Response<String>{
-        return api.saveMovie(movie_id, email, name, director, image, rate)
     }
 
 

@@ -31,6 +31,8 @@ class HomeFragment : BaseFragment() {
     private lateinit var popularLimitedAdapter: PopularLimitedMovieAdapter
     private var popularList: ArrayList<Movies> = ArrayList()
 
+    private val homeViewModel: HomeViewModel by inject()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,6 +87,8 @@ class HomeFragment : BaseFragment() {
             MyShared.getInstance(requireContext())
             MyShared.clear()
             binding.navigation.menuUserNameTv.text = ""
+            homeViewModel.removeAllData()
+
         }
     }
 

@@ -1,5 +1,6 @@
 package com.afrakhteh.movies.di.module
 
+import com.afrakhteh.movies.data.repository.DataBaseRepository
 import com.afrakhteh.movies.data.repository.MainRepository
 import org.koin.dsl.module
 
@@ -9,5 +10,8 @@ which will be provided by the Koin here.*/
 val repositoryModule = module {
     single {
         MainRepository(get())
+    }
+    single {
+        DataBaseRepository(get())
     }
 }

@@ -12,5 +12,9 @@ class CONSTANTS {
         const val NO_TRAILER_EXISTS = "1"
         const val REGISTER_HAVE_ACCOUNT = "1" //"This username already exists"
         const val REGISTER_SUCCESS_ACCOUNT = "2" //"Thank you for registering"
+
+        const val DB_TABLE_NAME = "saved_tb"
+        const val DB_DATABASE_NAME = "saved_db"
+        const val DB_DATABASE_VER = 1
     }
 }

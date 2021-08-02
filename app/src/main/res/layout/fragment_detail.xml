@@ -111,17 +111,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_director_name_tv" />
 
-        <ImageView
-            android:id="@+id/detail_save_btn_iv"
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:id="@+id/detail_save_btn_tg"
             android:layout_width="160dp"
-            android:layout_height="54dp"
+            android:layout_height="52dp"
             android:layout_margin="20dp"
-            android:src="@drawable/notsave"
-            android:scaleType="fitXY"
-            android:gravity="center"
+            android:background="@drawable/detail_save_selector"
+            android:text=""
+            android:textOff=""
+            android:textOn=""
+            app:layout_constraintBottom_toBottomOf="@+id/detail_comments_btn_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_director_name_tv"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintStart_toEndOf="@+id/detail_comments_btn_tv"
+            app:layout_constraintTop_toTopOf="@+id/detail_comments_btn_tv" />
 
         <TextView
             android:id="@+id/detail_story_line_title_tv"
